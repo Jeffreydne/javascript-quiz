@@ -9,6 +9,7 @@ html {
   height: 100%;
 }
 body {
+  max-width: 1200px;
   min-height: 100%;
   line-height: 1;
   font-family: Helvetica, Verdana, sans-serif;
@@ -21,6 +22,7 @@ input, select, option, textarea, button {
   font-size: 100%;
 }
 header {
+    width: 100%;
     padding: 2%;
     display: flex;
     justify-content: space-between;
@@ -31,3 +33,29 @@ nav {
 /* header p {
 
 } */
+section  {
+    text-align: center;
+}
+section p, section h2 {
+        width: 60%;
+    margin: 2% auto;
+}
+button {
+    background-color: #ad51d4;
+    color: #fff;
+    width: 15%;
+    border-radius: 7px;
+}
+button:hover {
+    background-color: #d386f5;  
+}
+.qbtn {
+    margin: 2%;
+}
+.qbtn > button {
+    width: 5%;
+    margin-right: 5px;
+}
+.qbtn p {
+    display: inline;
+}
