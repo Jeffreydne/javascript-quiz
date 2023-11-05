@@ -1,0 +1,33 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  line-height: 1;
+  font-family: Helvetica, Verdana, sans-serif;
+}
+ol, ul {
+  list-style: none;
+}
+input, select, option, textarea, button {
+  font-family: inherit;
+  font-size: 100%;
+}
+header {
+    padding: 2%;
+    display: flex;
+    justify-content: space-between;
+}
+nav {
+    color: #ad51d4
+}
+/* header p {
+
+} */
