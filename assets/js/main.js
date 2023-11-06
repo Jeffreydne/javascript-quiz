@@ -61,3 +61,6 @@ const questionBank = [
         correctAns: 0
     }
 ]
+console.log(questionBank[11].ansArr[2]);
+console.log(questionBank[5].correctAns);
+console.log(questionBank[0].Question);
