@@ -8,6 +8,7 @@ const ansA = document.querySelector("#ansA");
 const ansB = document.querySelector("#ansB");
 const ansC = document.querySelector("#ansC");
 const ansD = document.querySelector("#ansD");
+const timer = document.querySelector("#timer");
 
 //initialize variables for time and score
 let timeLeft = 0;
@@ -83,9 +84,24 @@ const questionBank = [
 // function to start quiz (event listener to call this function at bottom of code)
 function startQuiz() {
     startBtn.style.display = "none";
-    // startTimer();
     presentNext();
+    startTimer();
 }
+// function to start timer
+function startTimer() {
+   timeLeft = 90;
+   timerId = setInterval(function(){
+        if(timeLeft === 0) {
+            clearInterval(timerId);
+            timerId = null;
+            endQuiz();
+        } else {
+            timeLeft--;
+            timer.textContent = `${timeLeft}`
+        }
+   }, 1000);
+}
+// function to present the questions and answers
 function presentNext() {
     scoreTracker.textContent = `Questions attempted: ${questionsAttempted}\nNumber of correct answers: ${numCorrect}`;
 quizQuestion.textContent = `${questionBank[questionsAttempted].question}`;
@@ -94,7 +110,7 @@ ansB.textContent = `${questionBank[questionsAttempted].ansArr[1]}`;
 ansC.textContent = `${questionBank[questionsAttempted].ansArr[2]}`;
 ansD.textContent = `${questionBank[questionsAttempted].ansArr[3]}`;
 correctAnsIndx = questionBank[questionsAttempted].correctAns;
-console.log(correctAnsIndx);
+// console.log(correctAnsIndx);
 }
 
 //event listeners
