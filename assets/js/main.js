@@ -9,6 +9,7 @@ const ansB = document.querySelector("#ansB");
 const ansC = document.querySelector("#ansC");
 const ansD = document.querySelector("#ansD");
 const timer = document.querySelector("#timer");
+const timerP = document.querySelector("#timer-paragraph");
 
 //initialize variables for time and score
 let timeLeft = 0;
@@ -89,6 +90,8 @@ function startQuiz() {
 }
 // function to start timer
 function startTimer() {
+   timerP.style.fontWeight = "700";
+   timerP.style.fontSize = "larger";
    timeLeft = 90;
    timerId = setInterval(function(){
         if(timeLeft === 0) {
@@ -111,6 +114,9 @@ ansC.textContent = `${questionBank[questionsAttempted].ansArr[2]}`;
 ansD.textContent = `${questionBank[questionsAttempted].ansArr[3]}`;
 correctAnsIndx = questionBank[questionsAttempted].correctAns;
 // console.log(correctAnsIndx);
+}
+function endQuiz() {
+    console.log("quiz ended");
 }
 
 //event listeners
