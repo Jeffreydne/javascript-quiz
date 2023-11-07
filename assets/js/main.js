@@ -1,4 +1,20 @@
 console.log("i am working");
+//Initialize variables for DOM manipulation
+const startPage = document.querySelector("#start-page");
+const startBtn = document.querySelector("#start-btn");
+const scoreTracker = document.querySelector("#score-tracker");
+const quizQuestion = document.querySelector("#quiz-question");
+const ansA = document.querySelector("#ansA");
+const ansB = document.querySelector("#ansB");
+const ansC = document.querySelector("#ansC");
+const ansD = document.querySelector("#ansD");
+
+//initialize variables for time and score
+let timeLeft = 0;
+let questionsAttempted = 0;
+let numCorrect = 0;
+
+// questionBank is an array of 12 objects. Each object contains the questions to display, an array of possible answers, and the array index of the correct answer to compare to the users answer. 
 const questionBank = [
     {
         Question: "Which of the following is not considered a semantic element?",
@@ -61,6 +77,8 @@ const questionBank = [
         correctAns: 0
     }
 ]
+
+
 console.log(questionBank[11].ansArr[2]);
 console.log(questionBank[5].correctAns);
 console.log(questionBank[0].Question);
