@@ -13,7 +13,10 @@ const ansD = document.querySelector("#ansD");
 let timeLeft = 0;
 let questionsAttempted = 0;
 let numCorrect = 0;
-
+let timerId = null;
+//initialize variables to compare user's answer to correct answwer
+let correctAns;
+let userAns;
 // questionBank is an array of 12 objects. Each object contains the questions to display, an array of possible answers, and the array index of the correct answer to compare to the users answer. 
 const questionBank = [
     {
@@ -77,7 +80,18 @@ const questionBank = [
         correctAns: 0
     }
 ]
+// function to start quiz (event listener to call this function at bottom of code)
+function startQuiz() {
+    startBtn.style.display = "none";
+    startTimer();
+    presentNext();
+}
+function presentNext() {
+    scoreTracker.textContent = `Questions attempted: ${questionsAttempted}\nNumber of correct answers: ${numCorrect}`;
+}
 
+//event listeners
+startBtn.addEventListener("click", startQuiz);
 
 console.log(questionBank[11].ansArr[2]);
 console.log(questionBank[5].correctAns);
