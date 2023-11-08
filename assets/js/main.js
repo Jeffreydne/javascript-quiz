@@ -3,11 +3,13 @@ console.log("i am working");
 const startPage = document.querySelector("#start-page");
 const startBtn = document.querySelector("#start-btn");
 const scoreTracker = document.querySelector("#score-tracker");
+const quizPage = document.querySelector("#quiz-page");
 const quizQuestion = document.querySelector("#quiz-question");
 const ansA = document.querySelector("#ansA");
 const ansB = document.querySelector("#ansB");
 const ansC = document.querySelector("#ansC");
 const ansD = document.querySelector("#ansD");
+const result = document.querySelector("#result");
 const timer = document.querySelector("#timer");
 const timerP = document.querySelector("#timer-paragraph");
 
@@ -19,6 +21,7 @@ let timerId = null;
 //initialize variables to compare user's answer to correct answwer
 let correctAnsIndx;
 let userAns;
+let trueAns;
 // questionBank is an array of 12 objects. Each object contains the questions to display, an array of possible answers, and the array index of the correct answer to compare to the users answer. 
 const questionBank = [
     {
@@ -115,12 +118,41 @@ ansD.textContent = `${questionBank[questionsAttempted].ansArr[3]}`;
 correctAnsIndx = questionBank[questionsAttempted].correctAns;
 // console.log(correctAnsIndx);
 }
+function userCorrect() {
+    result.textContent = "Yes! You are correct.";
+}
+function userWrong() {
+    result.textContent = `Sorry, that is not correct. The actual answer is: ${questionBank[questionsAttempted].ansArr[correctAnsIndx]}`;
+}
 function endQuiz() {
     console.log("quiz ended");
 }
+// function isBtn(event) {
+//     event.preventDefault();
+//     if(!event.target.classList.contains("qbtn")) {
+//         console.log("not a button");
+//     }
+// }
 
 //event listeners
 startBtn.addEventListener("click", startQuiz);
+
+quizPage.addEventListener("click", function(event) {
+    event.preventDefault();
+    if(!event.target.classList.contains("theBtn")) {
+        // console.log("not a button");
+        return;
+    } else {
+        userAns = event.target.getAttribute('id');
+        trueAns = `a${correctAnsIndx}`;
+        if(userAns === trueAns) {
+            userCorrect();
+        } else {
+            userWrong();
+        }
+        // console.log(userAns, trueAns);
+    }
+});
 
 console.log(questionBank[11].ansArr[2]);
 console.log(questionBank[5].correctAns);

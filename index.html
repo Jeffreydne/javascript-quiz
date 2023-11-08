@@ -15,7 +15,7 @@
     <main>
         <Section id="start-page">
             <h2>Coding Quiz Challenge</h2>
-            <p>Try to answer the following code-related questions within the 90-second time limit. Keep in mind that incorrect answers will penalize your score and reduce your time by 8 seconds.</p>
+            <p>Try to answer the following code-related questions within the 90-second time limit. Keep in mind that if you answer incorrectly, the correct answer will be presented for 8 seconds while the clock is still running thereby reducing your time available to answer other questions.</p>
             <div>
                 <button id="start-btn">Start Quiz</button>
                 <p id="score-tracker"></p>
@@ -23,10 +23,11 @@
         </Section>
         <section id="quiz-page">
             <h2 id="quiz-question">This is a sample of what a quiz question might look like: </h2>
-            <div class="qbtn"><button>A</button><p class="question-text" id="ansA">Sample answer A</p></div>
-            <div class="qbtn"><button>B</button><p class="question-text" id="ansB">Sample answer B</p></div>
-            <div class="qbtn"><button>C</button><p class="question-text" id="ansC">Sample answer C</p></div>
-            <div class="qbtn"><button>D</button><p class="question-text" id="ansD">Sample answer D</p></div>
+            <div class="qbtn"><button class ="theBtn" id="a0">A</button><p class="question-text" id="ansA">Sample answer A</p></div>
+            <div class="qbtn"><button class ="theBtn" id="a1">B</button><p class="question-text" id="ansB">Sample answer B</p></div>
+            <div class="qbtn"><button class ="theBtn" id="a2">C</button><p class="question-text" id="ansC">Sample answer C</p></div>
+            <div class="qbtn"><button class ="theBtn" id="a3">D</button><p class="question-text" id="ansD">Sample answer D</p></div>
+            <h2 id="result"></h2>
         </section>
     </main>
     
