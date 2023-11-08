@@ -18,6 +18,7 @@ let timeLeft = 0;
 let questionsAttempted = 0;
 let numCorrect = 0;
 let timerId = null;
+
 //initialize variables to compare user's answer to correct answwer
 let correctAnsIndx;
 let userAns;
@@ -50,7 +51,7 @@ const questionBank = [
         correctAns: 2
     },
     {
-        question: `Given the following javasScript code:\nfor(i =0; i < 10.5; i++) {\nconsole.log(i);\n}`,
+        question: `Which of the following answers is correct regarding the following javasScript code:\nfor(i =0; i < 10.5; i++) {\nconsole.log(i);\n}`,
         ansArr: ["You need to use var or let to declare the variable i. If you don't then if i was previously declared in the global space, it will be changed by this for loop.","You need to use whole numbers in a for loop. Decimals will break the code.","You need to separate the expressions within the parentheses with commas. Using semicolons will break the code.","The above statement is formatted correctly. No change is needed."],
         correctAns: 0
     },
@@ -109,6 +110,7 @@ function startTimer() {
 }
 // function to present the questions and answers
 function presentNext() {
+    result.style.display = "none";
     scoreTracker.textContent = `Questions attempted: ${questionsAttempted}\nNumber of correct answers: ${numCorrect}`;
 quizQuestion.textContent = `${questionBank[questionsAttempted].question}`;
 ansA.textContent = `${questionBank[questionsAttempted].ansArr[0]}`;
@@ -119,10 +121,23 @@ correctAnsIndx = questionBank[questionsAttempted].correctAns;
 // console.log(correctAnsIndx);
 }
 function userCorrect() {
+    result.style.display = "block";
     result.textContent = "Yes! You are correct.";
+    questionsAttempted++;
+    numCorrect++;
+    if (questionsAttempted === 12) {
+        endQuiz();
+    }
+    setTimeout(presentNext, 1000);
 }
 function userWrong() {
+    result.style.display = "block";
     result.textContent = `Sorry, that is not correct. The actual answer is: ${questionBank[questionsAttempted].ansArr[correctAnsIndx]}`;
+    questionsAttempted++;
+    if (questionsAttempted === 12) {
+        endQuiz();
+    }
+    setTimeout(presentNext, 8000);
 }
 function endQuiz() {
     console.log("quiz ended");
