@@ -118,7 +118,7 @@ ansB.textContent = `${questionBank[questionsAttempted].ansArr[1]}`;
 ansC.textContent = `${questionBank[questionsAttempted].ansArr[2]}`;
 ansD.textContent = `${questionBank[questionsAttempted].ansArr[3]}`;
 correctAnsIndx = questionBank[questionsAttempted].correctAns;
-// console.log(correctAnsIndx);
+// function to tell user they are correct. If all 12 questions have been answered the quizEnd fxn is called, if not the next question will appear after 1 second.
 }
 function userCorrect() {
     result.style.display = "block";
@@ -126,18 +126,25 @@ function userCorrect() {
     questionsAttempted++;
     numCorrect++;
     if (questionsAttempted === 12) {
+        clearInterval(timerId);
+        timerId = null;
         endQuiz();
+    } else {
+        setTimeout(presentNext, 1000);
     }
-    setTimeout(presentNext, 1000);
 }
+// function to tell user they are not correct. If all 12 questions have been answered the quizEnd fxn is called, if not the next question will appear after 8 seconds, during which time the correct answer is displayed.
 function userWrong() {
     result.style.display = "block";
     result.textContent = `Sorry, that is not correct. The actual answer is: ${questionBank[questionsAttempted].ansArr[correctAnsIndx]}`;
     questionsAttempted++;
     if (questionsAttempted === 12) {
+        clearInterval(timerId);
+        timerId = null;
         endQuiz();
+    } else {
+        setTimeout(presentNext, 8000);
     }
-    setTimeout(presentNext, 8000);
 }
 function endQuiz() {
     console.log("quiz ended");
