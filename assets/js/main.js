@@ -1,6 +1,6 @@
-console.log("i am working");
 //Initialize variables for DOM manipulation
 const startPage = document.querySelector("#start-page");
+const gameOver = document.querySelector("#game-over-page");
 const startBtn = document.querySelector("#start-btn");
 const scoreTracker = document.querySelector("#score-tracker");
 const quizPage = document.querySelector("#quiz-page");
@@ -12,6 +12,7 @@ const ansD = document.querySelector("#ansD");
 const result = document.querySelector("#result");
 const timer = document.querySelector("#timer");
 const timerP = document.querySelector("#timer-paragraph");
+const finalResults = document.querySelector("#final-results");
 
 //initialize variables for time and score
 let timeLeft = 0;
@@ -23,7 +24,17 @@ let timerId = null;
 let correctAnsIndx;
 let userAns;
 let trueAns;
+
+// Hide game over section on load
+gameOver.style.display = "none";
+//XXXXXXXXXXXXXXXXXXXXXXX
+// finalResults.textContent = `Congratulations! You were able to answer all 12 questions in the time alloted. You answered ${numCorrect} questions correctly giving you a score of ${numCorrect}%. Submit your initials to save your score.`
+
+// finalResults.textContent = `In the 90 seconds alloted you gave an answer to ${questionsAttempted} of the 12 possible questions. You answered ${numCorrect} questions correctly giving you a score of ${numCorrect}%. Submit your initials to save your score.`
+
+
 // questionBank is an array of 12 objects. Each object contains the questions to display, an array of possible answers, and the array index of the correct answer to compare to the users answer. 
+
 const questionBank = [
     {
         question: "Which of the following is not considered a semantic element?",
@@ -147,14 +158,18 @@ function userWrong() {
     }
 }
 function endQuiz() {
+    let percent = numCorrect * 100 / 12;
+    let score = percent.toFixed(1);
+    startPage.style.display = "none";
+    quizPage.style.display = "none";
+    gameOver.style.display = "block";
+    if (timeLeft > 0) {
+        finalResults.textContent = `Congratulations! You were able to answer all 12 questions in the time alloted. You answered ${numCorrect} questions correctly giving you a score of ${score}%. Submit your initials to save your score.`
+    } else {
+        finalResults.textContent = `In the 90 seconds alloted you gave an answer to ${questionsAttempted} of the 12 possible questions. You answered ${numCorrect} questions correctly. That gives you a score of ${score}%. Submit your initials to save your score.`
+    }
     console.log("quiz ended");
 }
-// function isBtn(event) {
-//     event.preventDefault();
-//     if(!event.target.classList.contains("qbtn")) {
-//         console.log("not a button");
-//     }
-// }
 
 //event listeners
 startBtn.addEventListener("click", startQuiz);
@@ -172,10 +187,5 @@ quizPage.addEventListener("click", function(event) {
         } else {
             userWrong();
         }
-        // console.log(userAns, trueAns);
     }
 });
-
-console.log(questionBank[11].ansArr[2]);
-console.log(questionBank[5].correctAns);
-console.log(questionBank[0].Question);
