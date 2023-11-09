@@ -4,6 +4,8 @@ const gameOver = document.querySelector("#game-over-page");
 const startBtn = document.querySelector("#start-btn");
 const scoreTracker = document.querySelector("#score-tracker");
 const quizPage = document.querySelector("#quiz-page");
+const mainPage = document.querySelector("#main-page-container");
+const highScorePage = document.querySelector("#highScore-page-container");
 const quizQuestion = document.querySelector("#quiz-question");
 const ansA = document.querySelector("#ansA");
 const ansB = document.querySelector("#ansB");
@@ -25,12 +27,18 @@ let correctAnsIndx;
 let userAns;
 let trueAns;
 
-// Hide game over section on load
+// Hide game over section and high-score page on load
 gameOver.style.display = "none";
-//XXXXXXXXXXXXXXXXXXXXXXX
-// finalResults.textContent = `Congratulations! You were able to answer all 12 questions in the time alloted. You answered ${numCorrect} questions correctly giving you a score of ${numCorrect}%. Submit your initials to save your score.`
+highScorePage.style.display = "none";
 
-// finalResults.textContent = `In the 90 seconds alloted you gave an answer to ${questionsAttempted} of the 12 possible questions. You answered ${numCorrect} questions correctly giving you a score of ${numCorrect}%. Submit your initials to save your score.`
+
+//XXXXXXXXXXXXXXXXXXXXXXX
+// This is to hide main page while working on high score page
+
+// mainPage.style.display = "none";
+
+//XXXXXXXXXXXXXXXXXXXXXXXX
+
 
 
 // questionBank is an array of 12 objects. Each object contains the questions to display, an array of possible answers, and the array index of the correct answer to compare to the users answer. 
