@@ -157,6 +157,7 @@ function userWrong() {
         setTimeout(presentNext, 8000);
     }
 }
+// The end quiz function calculates the percent correct fixed to one decimal place and displays that in a message to the user while also making the quiz-page section disappear. A form is also added along with a submit button in the html so that the user can store their socre. 
 function endQuiz() {
     let percent = numCorrect * 100 / 12;
     let score = percent.toFixed(1);
@@ -172,12 +173,13 @@ function endQuiz() {
 }
 
 //event listeners
+// To start Quiz from main page
 startBtn.addEventListener("click", startQuiz);
 
+// event listener is set for entire quiz page which includes question and all 4 answers. event.target is used to avoid action unless the user actually clicks on an answer button. If the user does click on a button that id is retrieved and compared with the correct answer and the appropriate function is called. 
 quizPage.addEventListener("click", function(event) {
     event.preventDefault();
     if(!event.target.classList.contains("theBtn")) {
-        // console.log("not a button");
         return;
     } else {
         userAns = event.target.getAttribute('id');

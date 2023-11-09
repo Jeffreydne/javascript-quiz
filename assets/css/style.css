@@ -27,6 +27,7 @@ header {
     display: flex;
     justify-content: space-between;
 }
+/* Targets high-score -page header only (High Score page has a div in it's header) */
 header div {
     width: 100%;
     height: 100px;
@@ -38,6 +39,18 @@ header div {
     border-bottom: 3px solid #ad51d4;
     text-align: center;
 }
+/* border for header on High Scores Page */
+.topScores {
+    border-bottom: 3px solid #ad51d4; 
+}
+/* footer only exists on High Score Page */
+footer {
+    width: 100%;
+    padding: 2%;
+    display: flex;
+    justify-content: space-around;
+}
+/* The remaining commands are for the main page */
 nav {
     color: #ad51d4
 }
