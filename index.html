@@ -10,7 +10,7 @@
 <body>
     <div id="main-page-container">
         <header>
-            <nav>View high scores</nav>
+            <button type="button" id="high-score-button">View High Scores</button>
             <p id="timer-paragraph">Seconds left: <span id="timer">90</span></p>
         </header>
         <main>
@@ -18,16 +18,16 @@
                 <h2>Coding Quiz Challenge</h2>
                 <p>Try to answer the following code-related questions within the 90-second time limit. Keep in mind that if you answer incorrectly, the correct answer will be presented for 8 seconds while the clock is still running thereby reducing your time available to answer other questions.</p>
                 <div>
-                    <button id="start-btn">Start Quiz</button>
+                    <button type="button" id="start-btn">Start Quiz</button>
                     <p id="score-tracker"></p>
                 </div>
             </Section>
             <section id="quiz-page">
                 <h2 id="quiz-question">This is a sample of what a quiz question might look like: </h2>
-                <div class="qbtn"><button class ="theBtn" id="a0">A</button><p class="question-text" id="ansA">Sample answer A</p></div>
-                <div class="qbtn"><button class ="theBtn" id="a1">B</button><p class="question-text" id="ansB">Sample answer B</p></div>
-                <div class="qbtn"><button class ="theBtn" id="a2">C</button><p class="question-text" id="ansC">Sample answer C</p></div>
-                <div class="qbtn"><button class ="theBtn" id="a3">D</button><p class="question-text" id="ansD">Sample answer D</p></div>
+                <div class="qbtn"><button type="button" class ="theBtn" id="a0">A</button><p class="question-text" id="ansA">Sample answer A</p></div>
+                <div class="qbtn"><button type="button" class ="theBtn" id="a1">B</button><p class="question-text" id="ansB">Sample answer B</p></div>
+                <div class="qbtn"><button type="button" class ="theBtn" id="a2">C</button><p class="question-text" id="ansC">Sample answer C</p></div>
+                <div class="qbtn"><button type="button" class ="theBtn" id="a3">D</button><p class="question-text" id="ansD">Sample answer D</p></div>
                 <h2 id="result"></h2>
             </section>
             <section id="game-over-page">
@@ -62,8 +62,8 @@
             </section>
         </main>
         <footer>
-            <button type="button">Return to Quiz Page</button>
-            <button type="reset">Clear All Scores</button>
+            <button type="button" id="returnBtn">Return to Quiz Page</button>
+            <button type="reset" id="resetBtn">Clear All Scores</button>
         </footer>
     </div>
     

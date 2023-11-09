@@ -1,20 +1,31 @@
 //Initialize variables for DOM manipulation
+// Pages or other elements to hide and/or event listening
 const startPage = document.querySelector("#start-page");
 const gameOver = document.querySelector("#game-over-page");
-const startBtn = document.querySelector("#start-btn");
-const scoreTracker = document.querySelector("#score-tracker");
 const quizPage = document.querySelector("#quiz-page");
 const mainPage = document.querySelector("#main-page-container");
 const highScorePage = document.querySelector("#highScore-page-container");
+
+// Dom elements variables to change content
+const scoreTracker = document.querySelector("#score-tracker");
 const quizQuestion = document.querySelector("#quiz-question");
-const ansA = document.querySelector("#ansA");
-const ansB = document.querySelector("#ansB");
-const ansC = document.querySelector("#ansC");
-const ansD = document.querySelector("#ansD");
 const result = document.querySelector("#result");
 const timer = document.querySelector("#timer");
 const timerP = document.querySelector("#timer-paragraph");
 const finalResults = document.querySelector("#final-results");
+
+
+// Buttons
+const viewScores = document.querySelector("#high-score-button");
+const startBtn = document.querySelector("#start-btn");
+const ansA = document.querySelector("#ansA");
+const ansB = document.querySelector("#ansB");
+const ansC = document.querySelector("#ansC");
+const ansD = document.querySelector("#ansD");
+const submitInitialsBtn = document.querySelector("#submit-score");
+const returnToQuiz = document.querySelector("r#eturnBtn");
+const clearScores = document.querySelector("#resetBtn");
+
 
 //initialize variables for time and score
 let timeLeft = 0;
@@ -199,3 +210,6 @@ quizPage.addEventListener("click", function(event) {
         }
     }
 });
+
+//event listener for submit initials btn
+
