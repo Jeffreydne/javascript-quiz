@@ -50,7 +50,7 @@ This webstie is designed to be a learning tool to help people in software develo
 
 ## Learning Points
 
-During the making of this portfolio I devloped this website from scratch, based on a model suggested by the UC Berkeley Extension Full Stack Bootcamp. I implemented basic HTML and CSS such that my site looked similar to the screenshots provided. I used JavaScript to provide the logic for setting up a timed quiz that manipulated the DOM to provide questions, evaluate the user's answers, keep track of the score and provide them with results at the end, all while keeping in mind best practices. 
+During the making of this quiz I devloped this website from scratch, based on a model suggested by the UC Berkeley Extension Full Stack Bootcamp. I implemented basic HTML and CSS such that my site looked similar to the screenshots provided. I used JavaScript to provide the logic for setting up a timed quiz that manipulated the DOM to provide questions, evaluate the user's answers, keep track of the score and provide them with results at the end, all while keeping in mind best practices. 
 
 * XXXX
 
@@ -80,5 +80,5 @@ During the making of this portfolio I devloped this website from scratch, based 
 
 ---
 ## Credits
-
-Note: I initially enrolled in the full time Fullstack Bootcamp beginning in September 2023. I began working on this project just as I made the decision to transfer into the part time bootcamp that I am in currently. I wrote the bulk of the code while waiting for the part time camp to begin, using concepts covered in the full time bootcamp. The excellent staff at UC Berkeley Extension Full Stack Bootcamp provided the beginings of the table of technology used in this README.md. 
+ The excellent staff at UC Berkeley Extension Full Stack Bootcamp provided the beginings of the table of technology used in this README.md. 
+ To store scores using localStorage, I borrowed heavily from the web storage tutorial at freeCodeCamp.org, modifying as needed.
