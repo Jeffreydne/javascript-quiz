@@ -22,8 +22,8 @@ const ansA = document.querySelector("#ansA");
 const ansB = document.querySelector("#ansB");
 const ansC = document.querySelector("#ansC");
 const ansD = document.querySelector("#ansD");
-const submitInitialsBtn = document.querySelector("#submit-score");
-const returnToQuiz = document.querySelector("r#eturnBtn");
+const submitInitialsBtn = document.querySelector("#submit-initials");
+const returnToQuiz = document.querySelector("#returnBtn");
 const clearScores = document.querySelector("#resetBtn");
 
 
@@ -212,4 +212,30 @@ quizPage.addEventListener("click", function(event) {
 });
 
 //event listener for submit initials btn
+submitInitialsBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    mainPage.style.display = "none";
+    highScorePage.style.display = "block";
+});
 
+//event listener for return to Quiz button
+// reset initial conditions to restart quiz
+returnToQuiz.addEventListener("click", function(event) {
+    event.preventDefault();
+    timeLeft = 0;
+    questionsAttempted = 0;
+    numCorrect = 0;
+    timerId = null;
+    correctAnsIndx = undefined;
+    userAns = undefined;
+    trueAns = undefined;
+    gameOver.style.display = "none";
+    result.style.display = "none";
+    gameOver.style.display = "none";
+    scoreTracker.style.display = "none";
+    startPage.style.display = "block";
+    quizPage.style.display = "block";
+    mainPage.style.display = "block";
+    startBtn.style.display = "inline";
+    highScorePage.style.display = "none";
+});
