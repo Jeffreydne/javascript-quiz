@@ -1,3 +1,4 @@
+console.log("I work");
 //Initialize variables for DOM manipulation
 // Pages or other elements to hide and/or event listening
 const startPage = document.querySelector("#start-page");
@@ -6,14 +7,14 @@ const quizPage = document.querySelector("#quiz-page");
 const mainPage = document.querySelector("#main-page-container");
 const highScorePage = document.querySelector("#highScore-page-container");
 
-// Dom elements variables to change content
+// Dom elements variables to change or retrieve content
 const scoreTracker = document.querySelector("#score-tracker");
 const quizQuestion = document.querySelector("#quiz-question");
 const result = document.querySelector("#result");
 const timer = document.querySelector("#timer");
 const timerP = document.querySelector("#timer-paragraph");
 const finalResults = document.querySelector("#final-results");
-
+const initials = document.querySelector("#initials");
 
 // Buttons
 const viewScores = document.querySelector("#high-score-button");
@@ -37,6 +38,8 @@ let timerId = null;
 let correctAnsIndx;
 let userAns;
 let trueAns;
+let score;
+let arrToPost = [];
 
 // Hide game over section and high-score page on load
 gameOver.style.display = "none";
@@ -191,7 +194,7 @@ function userWrong() {
 // The end quiz function calculates the percent correct fixed to one decimal place and displays that in a message to the user while also making the quiz-page section disappear. A form is also added along with a submit button in the html so that the user can store their socre. 
 function endQuiz() {
     let percent = numCorrect * 100 / 12;
-    let score = percent.toFixed(1);
+    score = percent.toFixed(1);
     startPage.style.display = "none";
     quizPage.style.display = "none";
     gameOver.style.display = "block";
@@ -226,8 +229,24 @@ quizPage.addEventListener("click", function(event) {
 //event listener for submit initials btn
 submitInitialsBtn.addEventListener("click", function(event) {
     event.preventDefault();
+    let initToStore = initials.value;
+    const storageObj = {
+        name: `${initToStore}`,
+        score: `${score}`
+    }
+    const existingHighScoreArray = JSON.parse(localStorage.getItem('highScores')) || [];
+    //? remove last comma in line 238
+    const newHighScoreArray = [...existingHighScoreArray, storageObj,];
+    localStorage.setItem('highScores', JSON.stringify(newHighScoreArray));
+    console.log(newHighScoreArray);
+    // arrToPost = (localStorage.getItem('highScores'));
+    // console.log(arrToPost);
+    newHighScoreArray.sort((a,b) => b.score - a.score);
+    console.log(newHighScoreArray);
+    
     mainPage.style.display = "none";
     highScorePage.style.display = "block";
+ 
 });
 
 //event listener for return to Quiz button
