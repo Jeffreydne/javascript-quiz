@@ -50,8 +50,19 @@ highScorePage.style.display = "none";
 
 //XXXXXXXXXXXXXXXXXXXXXXXX
 
-
-
+// function to load sample question format at start of quiz and on restart
+function sampleQuestionFxn() {
+    const sampleQuestion = {
+        question: "This is a sample of what a quiz question might look like:",
+        ansArr: ["Sample answer A", "Sample answer B", "Sample answer C", "Sample answer D"]
+    } 
+    quizQuestion.textContent = `${sampleQuestion.question}`;
+    ansA.textContent = `${sampleQuestion.ansArr[0]}`;
+    ansB.textContent = `${sampleQuestion.ansArr[1]}`;
+    ansC.textContent = `${sampleQuestion.ansArr[2]}`;
+    ansD.textContent = `${sampleQuestion.ansArr[3]}`;
+}
+sampleQuestionFxn();
 // questionBank is an array of 12 objects. Each object contains the questions to display, an array of possible answers, and the array index of the correct answer to compare to the users answer. 
 
 const questionBank = [
@@ -138,6 +149,7 @@ function startTimer() {
         }
    }, 1000);
 }
+
 // function to present the questions and answers
 function presentNext() {
     result.style.display = "none";
@@ -222,13 +234,15 @@ submitInitialsBtn.addEventListener("click", function(event) {
 // reset initial conditions to restart quiz
 returnToQuiz.addEventListener("click", function(event) {
     event.preventDefault();
-    timeLeft = 0;
+    timeLeft = 90;
     questionsAttempted = 0;
     numCorrect = 0;
     timerId = null;
     correctAnsIndx = undefined;
     userAns = undefined;
     trueAns = undefined;
+    sampleQuestionFxn();
+    timer.textContent = `${timeLeft}`
     gameOver.style.display = "none";
     result.style.display = "none";
     gameOver.style.display = "none";
