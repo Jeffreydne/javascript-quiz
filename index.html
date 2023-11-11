@@ -8,12 +8,15 @@
  
 </head>
 <body>
+    <!-- main-pge-container div holds the enitre page that initially loads, including header and main. This page will be hidden when highScorePage loads -->
     <div id="main-page-container">
+        <!-- header contains button to see high scores and timer for quiz -->
         <header>
             <button type="button" id="high-score-button">View High Scores</button>
             <p id="timer-paragraph">Seconds left: <span id="timer">90</span></p>
         </header>
         <main>
+            <!-- on loading start-page secttion holds the quiz instructions, start button and sample quiz layout. Once start-btn is clicked the button is replaed with score-tracker which displays questions attempted and # correct-->
             <Section id="start-page">
                 <h2>Coding Quiz Challenge</h2>
                 <p>Try to answer the following code-related questions within the 90-second time limit. Keep in mind that if you answer incorrectly, the correct answer will be presented for 8 seconds while the clock is still running thereby reducing your time available to answer other questions.</p>
@@ -22,14 +25,17 @@
                     <p id="score-tracker"></p>
                 </div>
             </Section>
+            <!-- quiz-page section hold questions and answers to quiz. Each answer is preceded by a button to click that allows user to choose an answer -->
             <section id="quiz-page">
                 <h2 id="quiz-question">This is a sample of what a quiz question might look like: </h2>
                 <div class="qbtn"><button type="button" class ="theBtn" id="a0">A</button><p class="question-text" id="ansA">Sample answer A</p></div>
                 <div class="qbtn"><button type="button" class ="theBtn" id="a1">B</button><p class="question-text" id="ansB">Sample answer B</p></div>
                 <div class="qbtn"><button type="button" class ="theBtn" id="a2">C</button><p class="question-text" id="ansC">Sample answer C</p></div>
                 <div class="qbtn"><button type="button" class ="theBtn" id="a3">D</button><p class="question-text" id="ansD">Sample answer D</p></div>
+                <!-- As each question is answered, a message is displayed in <h2> result telling the user if they are right or wrong -->
                 <h2 id="result"></h2>
             </section>
+            <!-- when either 90 seconds elapse, or all 12 questions are answered, the game ends. The start-page section is then replaced by the below game-over-page section which tells the user thier results in the final results <p> and allows them to enter thier initials & submit using the form below. Their initials are saved along with their socre in local storage. Submitting their initials also brings them to the high-score-page below -->
             <section id="game-over-page">
                 <h1>GAME OVER</h1>
                 <p id="final-results"></p>
@@ -41,12 +47,14 @@
             </section>
         </main>
     </div>
+    <!-- when the users initials are submitted at the end of the game (or at anytime if the user clicks the high-score-button in the upper left of the header), then the main-page-container div is replaced by the below highScore-page-container div, with its own header and main section -->
     <div id="highScore-page-container">
         <header>
             <div>
                 <h1 id="#highScores">HIGH SCORES FOR CODING QUIZ</h1>
             </div>
         </header>
+        <!-- The high scores which are stored in local storage will be dynamically loaded into the topScores section using a "for loop" in javeScript-->
         <main>
             <section class="topScores">
                 <p>Sample Scores: 100</p>
@@ -61,6 +69,7 @@
                 <p>Sample Scores: 100</p>
             </section>
         </main>
+        <!-- In the footer there is a returnBtn to reset the start up page and a resetBtn to clear the data from local storage.  -->
         <footer>
             <button type="button" id="returnBtn">Return to Quiz Page</button>
             <button type="reset" id="resetBtn">Clear All Scores</button>
