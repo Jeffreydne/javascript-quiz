@@ -15,6 +15,7 @@ const timer = document.querySelector("#timer");
 const timerP = document.querySelector("#timer-paragraph");
 const finalResults = document.querySelector("#final-results");
 const initials = document.querySelector("#initials");
+const scoreSection = document.querySelector("#topScores");
 
 // Buttons
 const viewScores = document.querySelector("#high-score-button");
@@ -240,6 +241,9 @@ submitInitialsBtn.addEventListener("click", function(event) {
     const newHighScoreArray = [...existingHighScoreArray, storageObj,];
     localStorage.setItem('highScores', JSON.stringify(newHighScoreArray));
 
+    
+    // let scoreSection = document.querySelector("#topScores");
+    scoreSection.innerHTML = "<p>INITIALS: SCORE</p>";
     arrToPost = JSON.parse(localStorage.getItem('highScores'));
 
     newHighScoreArray.sort((a,b) => b.score - a.score);
@@ -247,6 +251,8 @@ submitInitialsBtn.addEventListener("click", function(event) {
     for(let i = 0; i < 11; i++) {
         let pToAdd = document.createElement("p");
         pToAdd.textContent = `${newHighScoreArray[i].name}: ${newHighScoreArray[i].score}`;
+        scoreSection.appendChild(pToAdd);
+    
     }
     mainPage.style.display = "none";
     highScorePage.style.display = "block";
