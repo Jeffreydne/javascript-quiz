@@ -226,7 +226,7 @@ quizPage.addEventListener("click", function(event) {
     }
 });
 
-//event listener for submit initials btn
+//event listener for submit initials btn. When clicked the initials in the text box will be stored in a variable and an  object (storageObj) will be created with those initials stored in name property and the socfre stored in score property. Then add this object to array of objects in local storage (existingHighScoreArray)
 submitInitialsBtn.addEventListener("click", function(event) {
     event.preventDefault();
     let initToStore = initials.value;
@@ -234,8 +234,9 @@ submitInitialsBtn.addEventListener("click", function(event) {
         name: `${initToStore}`,
         score: `${score}`
     }
+    //get existing highScoreArray stored with key 'highScores' from local Storage and parse it using JSON.parse (or if it doesn't yet exist get an empty array)
     const existingHighScoreArray = JSON.parse(localStorage.getItem('highScores')) || [];
-    //? remove last comma in line 238
+    // insert new obj into array then store it using JSON.stringify back into the 'highScores' property
     const newHighScoreArray = [...existingHighScoreArray, storageObj,];
     localStorage.setItem('highScores', JSON.stringify(newHighScoreArray));
 
@@ -243,7 +244,10 @@ submitInitialsBtn.addEventListener("click", function(event) {
 
     newHighScoreArray.sort((a,b) => b.score - a.score);
     // console.log(newHighScoreArray);
-    
+    for(let i = 0; i < 11; i++) {
+        let pToAdd = document.createElement("p");
+        pToAdd.textContent = `${newHighScoreArray[i].name}: ${newHighScoreArray[i].score}`;
+    }
     mainPage.style.display = "none";
     highScorePage.style.display = "block";
  
