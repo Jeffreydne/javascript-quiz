@@ -238,11 +238,11 @@ submitInitialsBtn.addEventListener("click", function(event) {
     //? remove last comma in line 238
     const newHighScoreArray = [...existingHighScoreArray, storageObj,];
     localStorage.setItem('highScores', JSON.stringify(newHighScoreArray));
-    console.log(newHighScoreArray);
-    // arrToPost = (localStorage.getItem('highScores'));
-    // console.log(arrToPost);
+
+    arrToPost = JSON.parse(localStorage.getItem('highScores'));
+
     newHighScoreArray.sort((a,b) => b.score - a.score);
-    console.log(newHighScoreArray);
+    // console.log(newHighScoreArray);
     
     mainPage.style.display = "none";
     highScorePage.style.display = "block";
