@@ -158,6 +158,7 @@ function startTimer() {
 function presentNext() {
     result.style.display = "none";
     scoreTracker.textContent = `Questions attempted: ${questionsAttempted}\nNumber of correct answers: ${numCorrect}`;
+    scoreTracker.style.display = "block";
 quizQuestion.textContent = `${questionBank[questionsAttempted].question}`;
 ansA.textContent = `${questionBank[questionsAttempted].ansArr[0]}`;
 ansB.textContent = `${questionBank[questionsAttempted].ansArr[1]}`;
@@ -207,11 +208,35 @@ function endQuiz() {
     console.log("quiz ended");
 }
 
+   // function to retrieve the high scores in local storage and to display them in the topScores section by dynamically adding them to the DOM. This can be called by the view high scores button or as part of the submitInitials function
+
+   function displayHighScores() {
+    //add head paragraph to topScores section 
+    scoreSection.innerHTML = "<p>INITIALS: SCORE</p></hr>";
+    //retrieve highScores as an array of objects using JSON.parse
+    arrToPost = JSON.parse(localStorage.getItem('highScores'));
+    //sort the highScore objects in descending order based on score
+    arrToPost.sort((a,b) => b.score - a.score);
+    // dynamically add top 11 scores into the scoreSection beneath the head paragraph
+    for(let i = 0; i < 11; i++) {
+        let pToAdd = document.createElement("p");
+        pToAdd.textContent = `${arrToPost[i].name}: ${arrToPost[i].score}`;
+        scoreSection.appendChild(pToAdd);
+    
+    }
+    //hide mainPage and display highSocrePage
+    mainPage.style.display = "none";
+    highScorePage.style.display = "block";
+}
+
 //event listeners
 // To start Quiz from main page
 startBtn.addEventListener("click", startQuiz);
 
-// event listener is set for entire quiz page which includes question and all 4 answers. event.target is used to avoid action unless the user actually clicks on an answer button. If the user does click on a button that id is retrieved and compared with the correct answer and the appropriate function is called. 
+// to view high scores that are stored in local storage
+viewScores.addEventListener("click", displayHighScores);
+
+// To listen for user response to question presented, an event listener is set for entire quiz page which includes question and all 4 answers. event.target is used to avoid action unless the user actually clicks on an answer button. If the user does click on a button that id is retrieved and compared with the correct answer and the appropriate function is called. 
 quizPage.addEventListener("click", function(event) {
     event.preventDefault();
     if(!event.target.classList.contains("theBtn")) {
@@ -240,23 +265,7 @@ submitInitialsBtn.addEventListener("click", function(event) {
     // insert new obj into array then store it using JSON.stringify back into the 'highScores' property
     const newHighScoreArray = [...existingHighScoreArray, storageObj,];
     localStorage.setItem('highScores', JSON.stringify(newHighScoreArray));
-
-    
-    // let scoreSection = document.querySelector("#topScores");
-    scoreSection.innerHTML = "<p>INITIALS: SCORE</p>";
-    arrToPost = JSON.parse(localStorage.getItem('highScores'));
-
-    newHighScoreArray.sort((a,b) => b.score - a.score);
-    // console.log(newHighScoreArray);
-    for(let i = 0; i < 11; i++) {
-        let pToAdd = document.createElement("p");
-        pToAdd.textContent = `${newHighScoreArray[i].name}: ${newHighScoreArray[i].score}`;
-        scoreSection.appendChild(pToAdd);
-    
-    }
-    mainPage.style.display = "none";
-    highScorePage.style.display = "block";
- 
+    displayHighScores();
 });
 
 //event listener for return to Quiz button
