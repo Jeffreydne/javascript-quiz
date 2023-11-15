@@ -213,20 +213,22 @@ function endQuiz() {
 
    function displayHighScores() {
     //check to see if any high scores have been added
-    
-    //add head paragraph to topScores section 
-    scoreSection.innerHTML = "<p>INITIALS: SCORE</p></hr>";
-    //retrieve highScores as an array of objects using JSON.parse
-    arrToPost = JSON.parse(localStorage.getItem('highScores'));
-    console.log(arrToPost);
-    //sort the highScore objects in descending order based on score
-    arrToPost.sort((a,b) => b.score - a.score);
-    // dynamically add top 11 scores into the scoreSection beneath the head paragraph
-    for(let i = 0; (i < 11 && i < arrToPost.length); i++) {
-        let pToAdd = document.createElement("p");
-        pToAdd.textContent = `${arrToPost[i].name}: ${arrToPost[i].score}`;
-        scoreSection.appendChild(pToAdd);
-    
+    if(!localStorage.highScores) {
+        scoreSection.innerHTML = "<p>There are not yet any scores to post. Take the quiz and be the first to post!</p></hr>";
+    } else {
+        //add head paragraph to topScores section 
+        scoreSection.innerHTML = "<p>INITIALS: SCORE</p></hr>";
+        //retrieve highScores as an array of objects using JSON.parse
+        arrToPost = JSON.parse(localStorage.getItem('highScores'));
+        console.log(arrToPost);
+        //sort the highScore objects in descending order based on score
+        arrToPost.sort((a,b) => b.score - a.score);
+        // dynamically add top 11 scores into the scoreSection beneath the head paragraph
+        for(let i = 0; (i < 11 && i < arrToPost.length); i++) {
+            let pToAdd = document.createElement("p");
+            pToAdd.textContent = `${arrToPost[i].name}: ${arrToPost[i].score}`;
+            scoreSection.appendChild(pToAdd);
+        }
     }
     //hide mainPage and display highSocrePage
     mainPage.style.display = "none";
@@ -301,4 +303,5 @@ returnToQuiz.addEventListener("click", function(event) {
 
 clearScores.addEventListener("click", () => {
     localStorage.removeItem('highScores');
+    displayHighScores();
 });
