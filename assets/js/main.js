@@ -1,4 +1,5 @@
 console.log("I work");
+console.log(JSON.parse(localStorage.getItem('highScores', localStorage)));
 //Initialize variables for DOM manipulation
 // Pages or other elements to hide and/or event listening
 const startPage = document.querySelector("#start-page");
@@ -211,14 +212,17 @@ function endQuiz() {
    // function to retrieve the high scores in local storage and to display them in the topScores section by dynamically adding them to the DOM. This can be called by the view high scores button or as part of the submitInitials function
 
    function displayHighScores() {
+    //check to see if any high scores have been added
+    
     //add head paragraph to topScores section 
     scoreSection.innerHTML = "<p>INITIALS: SCORE</p></hr>";
     //retrieve highScores as an array of objects using JSON.parse
     arrToPost = JSON.parse(localStorage.getItem('highScores'));
+    console.log(arrToPost);
     //sort the highScore objects in descending order based on score
     arrToPost.sort((a,b) => b.score - a.score);
     // dynamically add top 11 scores into the scoreSection beneath the head paragraph
-    for(let i = 0; i < 11; i++) {
+    for(let i = 0; (i < 11 && i < arrToPost.length); i++) {
         let pToAdd = document.createElement("p");
         pToAdd.textContent = `${arrToPost[i].name}: ${arrToPost[i].score}`;
         scoreSection.appendChild(pToAdd);
@@ -264,6 +268,7 @@ submitInitialsBtn.addEventListener("click", function(event) {
     const existingHighScoreArray = JSON.parse(localStorage.getItem('highScores')) || [];
     // insert new obj into array then store it using JSON.stringify back into the 'highScores' property
     const newHighScoreArray = [...existingHighScoreArray, storageObj,];
+    console.log(newHighScoreArray);
     localStorage.setItem('highScores', JSON.stringify(newHighScoreArray));
     displayHighScores();
 });
@@ -290,4 +295,10 @@ returnToQuiz.addEventListener("click", function(event) {
     mainPage.style.display = "block";
     startBtn.style.display = "inline";
     highScorePage.style.display = "none";
+});
+
+// event listener to remove the highScores object from local storage
+
+clearScores.addEventListener("click", () => {
+    localStorage.removeItem('highScores');
 });
