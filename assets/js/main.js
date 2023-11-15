@@ -1,5 +1,4 @@
-console.log("I work");
-console.log(JSON.parse(localStorage.getItem('highScores', localStorage)));
+
 //Initialize variables for DOM manipulation
 // Pages or other elements to hide and/or event listening
 const startPage = document.querySelector("#start-page");
@@ -46,14 +45,6 @@ let arrToPost = [];
 // Hide game over section and high-score page on load
 gameOver.style.display = "none";
 highScorePage.style.display = "none";
-
-
-//XXXXXXXXXXXXXXXXXXXXXXX
-// This is to hide main page while working on high score page
-
-// mainPage.style.display = "none";
-
-//XXXXXXXXXXXXXXXXXXXXXXXX
 
 // function to load sample question format at start of quiz and on restart
 function sampleQuestionFxn() {
@@ -206,13 +197,12 @@ function endQuiz() {
     } else {
         finalResults.textContent = `In the 90 seconds alloted you gave an answer to ${questionsAttempted} of the 12 possible questions. You answered ${numCorrect} questions correctly. That gives you a score of ${score}%. Submit your initials to save your score.`
     }
-    console.log("quiz ended");
 }
 
    // function to retrieve the high scores in local storage and to display them in the topScores section by dynamically adding them to the DOM. This can be called by the view high scores button or as part of the submitInitials function
 
    function displayHighScores() {
-    //check to see if any high scores have been added
+    //check to see if any high scores have been added- if not tell user & invite user to play, if there are scores in local storage then display them. 
     if(!localStorage.highScores) {
         scoreSection.innerHTML = "<p>There are not yet any scores to post. Take the quiz and be the first to post!</p></hr>";
     } else {
@@ -220,7 +210,7 @@ function endQuiz() {
         scoreSection.innerHTML = "<p>INITIALS: SCORE</p></hr>";
         //retrieve highScores as an array of objects using JSON.parse
         arrToPost = JSON.parse(localStorage.getItem('highScores'));
-        console.log(arrToPost);
+    
         //sort the highScore objects in descending order based on score
         arrToPost.sort((a,b) => b.score - a.score);
         // dynamically add top 11 scores into the scoreSection beneath the head paragraph
