@@ -45,7 +45,7 @@ XXXXX
 This webstie is designed to be a learning tool to help people in software development to test their knowledge about HTML, CSS and JavaScript. To do this they can take a timed quiz which will help the user clarify what concepts they already know, and what areas need more study. The quiz is timed and the score is tracked. At the end they can enter their scoree and compare it to the high scores of others, or to their previous attempts. 
 
 
-![ alt text](XXXX.XXXX)
+![ alt text](./assets/images/code-quiz-screenshot.png)
 ---
 
 ## Learning Points
