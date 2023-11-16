@@ -17,7 +17,7 @@
 
 [Visit the Deployed Site](https://jeffreydne.github.io/Jeff-Nelson-javascript-quiz)
 
-This is a timed quiz on javascrit, css and html. Once the user starts the quiz they have 90 seconds to complete 12 questions. when they answer incorrectly 8 seconds are deducted. At the end, the user can record their score in local storage and compare how they did to others, or to their previous attempts.
+This is a timed quiz on javascrit, css and html. Once the user starts the quiz they have 90 seconds to complete 12 questions. when they answer incorrectly there is an 8 second pause until the following question is presented. During the pause the correct answer is presented. At the end, the user can record their score in local storage and compare how they did to others, or to their previous attempts.
 
 
 ---
@@ -42,7 +42,7 @@ XXXXX
 ```
 ## Usage
 
-This webstie is designed to be a learning tool to help people in software development to test their knowledge about HTML, CSS and JavaScript. To do this they can take a timed quiz which will help the user clarify what concepts they already know, and what areas need more study. The quiz is timed and the score is tracked. At the end they can enter their scoree and compare it to the high scores of others, or to their previous attempts. 
+This webstie is designed to be a learning tool to help people in software development to test their knowledge about HTML, CSS and JavaScript. To do this they can take a timed quiz which will help the user clarify what concepts they already know, and what areas need more study. The quiz is timed and the score is tracked. At the end they can enter their score and compare it to the high scores of others, or to their previous attempts. 
 
 
 ![ alt text](./assets/images/code-quiz-screenshot.png)
@@ -80,5 +80,5 @@ During the making of this quiz I devloped this website from scratch, based on a 
 
 ---
 ## Credits
- The excellent staff at UC Berkeley Extension Full Stack Bootcamp provided the beginings of the table of technology used in this README.md. 
+ The excellent staff at UC Berkeley Extension Full Stack Bootcamp provided the beginings of the table of technology used in this README.md. The basic design and layout of the quiz is also based on the samples provided by UC Berkeley Extension.
  To store scores using localStorage, I borrowed heavily from the web storage tutorial at freeCodeCamp.org, modifying as needed.
