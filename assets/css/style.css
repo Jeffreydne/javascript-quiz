@@ -54,9 +54,7 @@ footer {
 nav {
     color: #ad51d4
 }
-/* header p {
 
-} */
 section  {
     text-align: center;
 }
@@ -106,11 +104,4 @@ button:hover {
     margin: 0 0 0 10px;
     display: inline;
     text-align: left;
-    /* position: relative;
-    left: -35%;
-    top: 5%; */
-   
 }
-/* .qBtn button {
-    float: left;
-} */
