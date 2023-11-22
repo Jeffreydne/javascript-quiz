@@ -260,7 +260,6 @@ submitInitialsBtn.addEventListener("click", function(event) {
     const existingHighScoreArray = JSON.parse(localStorage.getItem('highScores')) || [];
     // insert new obj into array then store it using JSON.stringify back into the 'highScores' property
     const newHighScoreArray = [...existingHighScoreArray, storageObj,];
-    console.log(newHighScoreArray);
     localStorage.setItem('highScores', JSON.stringify(newHighScoreArray));
     displayHighScores();
 });
